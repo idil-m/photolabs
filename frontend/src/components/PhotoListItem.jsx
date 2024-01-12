@@ -4,16 +4,16 @@ import "../styles/PhotoListItem.scss";
 
 
 
-const PhotoListItem = ({ id, location, imageSource, username, profile }) => {
+const PhotoListItem = ({ photo }) => {
   return (
     <div className="photo-list-item">
-      <img src={imageSource} alt={`Photo ${id}`} />
+      <img src={photo.imageSource} alt={`Photo ${photo.id}`} />
       <div className="photographer-info">
-        <img src={profile} alt={`${username}'s profile`} />
-        <span className="username">{username}</span>
+        <img src={photo.profile} alt={`${photo.username}'s profile`} />
+        <span className="username">{photo.username}</span>
       </div>
       <div className="photo-location">
-        {location.city}, {location.country}
+        {photo.location.city}, {photo.location.country}
       </div>
     </div>
   );
