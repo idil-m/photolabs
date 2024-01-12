@@ -35,9 +35,9 @@ const App = () => {
     
 
 
-      { /*FavBadge/> */}
-      {/*FavIcon/> */}
-      { /* PhotoFavButton/>*/}
+      <FavBadge/> 
+      <FavIcon/> 
+      < PhotoFavButton/>
       <PhotoList/> 
       {/*TopicList/>*/}     
        {/*TopicListItem/>*/}
