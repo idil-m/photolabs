@@ -24,18 +24,21 @@ import TopNavigation from 'components/TopNavigationBar';
 
 
 const App = () => (
+
+
   //const photos = new Array(3).fill(sampleDataForPhotoListItem);
   //key={photo.id + index} photo={photo} 
   
     <div className="App">
      
      <PhotoList/> 
+     <TopicList/>  
           {/*PhotoListItem /> */} 
         {/*<FavBadge/> */} 
       {/*FavIcon/> */}
       {/*PhotoFavButton/> */}
       
-      {/*TopicList/>*/}     
+       
        {/*TopicListItem/>*/}
       {/*TopNavigation/>*/}
     </div>
