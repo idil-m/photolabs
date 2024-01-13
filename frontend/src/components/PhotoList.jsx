@@ -62,9 +62,15 @@ const PhotoList = ({ photoData }) => {
   console.log(photoData);
   return (
     <ul className="photo-list">
-      {photoData.map(photo => (  
+      {photoData.map(photo => (
         <li key={photo.id} className="photo-list__item">
-          <PhotoListItem {...photo} />
+          <PhotoListItem
+            id={photo.id}
+            location={photo.location}
+            imageSource={photo.urls.regular}
+            username={photo.user.username}
+            profile={photo.user.profile}
+          />
         </li>
       ))}
     </ul>
