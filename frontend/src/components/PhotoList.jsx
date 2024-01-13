@@ -58,18 +58,13 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = ({ photoData }) => {  
+  console.log(photoData);
   return (
     <ul className="photo-list">
-      {sampleDataForPhotoList.map(photoData => (
-        <li key={photoData.id} className="photo-list__item">
-          <PhotoListItem
-            id={photoData.id}
-            location={photoData.location}
-            imageSource={photoData.urls.regular}
-            username={photoData.user.username}
-            profile={photoData.user.profile}
-          />
+      {photoData.map(photo => (  
+        <li key={photo.id} className="photo-list__item">
+          <PhotoListItem {...photo} />
         </li>
       ))}
     </ul>
