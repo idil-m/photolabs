@@ -9,6 +9,7 @@ import PhotoList from './components/PhotoList';
 import TopicList from 'components/TopicList';
 import TopicListItem from 'components/TopicListItem';
 import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
 
 // Note: Rendering a single component to build components in isolation
 //const sampleDataForPhotoListItem = {
@@ -24,24 +25,18 @@ import TopNavigationBar from 'components/TopNavigationBar';
 
 
 const App = () => {
-  const Count = 5;
+  const favoriteCount = 5;
 
   return (
   //const photos = new Array(3).fill(sampleDataForPhotoListItem);
   //key={photo.id + index} photo={photo} 
   
     <div className="App">
-       <TopNavigationBar Count={Count} />
-      {/*<TopicList/>*/} 
-     <PhotoList/> 
-     
-          {/*PhotoListItem /> */} 
-        {/*<FavBadge/> */} 
-      {/*FavIcon/> */}
-      {/*PhotoFavButton/> */}
       
-       
-       {/*TopicListItem/>*/}
+       <HomeRoute favoriteCount={favoriteCount} />
+    
+     
+          
      
     </div>
   

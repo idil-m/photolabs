@@ -1,11 +1,14 @@
 import React from 'react';
 
 import '../styles/HomeRoute.scss';
+import TopNavigationBar from '../components/TopNavigationBar';
+import PhotoList from '../components/PhotoList';
 
-const HomeRoute = () => {
+const HomeRoute = ({ favoriteCount }) => {
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigationBar favoriteCount={favoriteCount} />
+      <PhotoList />
     </div>
   );
 };
