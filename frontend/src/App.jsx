@@ -8,7 +8,7 @@ import PhotoFavButton from './components/PhotoFavButton';
 import PhotoList from './components/PhotoList';
 import TopicList from 'components/TopicList';
 import TopicListItem from 'components/TopicListItem';
-import TopNavigation from 'components/TopNavigationBar';
+import TopNavigationBar from 'components/TopNavigationBar';
 
 // Note: Rendering a single component to build components in isolation
 //const sampleDataForPhotoListItem = {
@@ -23,16 +23,18 @@ import TopNavigation from 'components/TopNavigationBar';
 //};
 
 
-const App = () => (
+const App = () => {
+  const Count = 5;
 
-
+  return (
   //const photos = new Array(3).fill(sampleDataForPhotoListItem);
   //key={photo.id + index} photo={photo} 
   
     <div className="App">
-     
+       <TopNavigationBar Count={Count} />
+      {/*<TopicList/>*/} 
      <PhotoList/> 
-     <TopicList/>  
+     
           {/*PhotoListItem /> */} 
         {/*<FavBadge/> */} 
       {/*FavIcon/> */}
@@ -40,9 +42,9 @@ const App = () => (
       
        
        {/*TopicListItem/>*/}
-      {/*TopNavigation/>*/}
+     
     </div>
   
 );
-
+  }
 export default App;
