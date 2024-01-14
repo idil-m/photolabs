@@ -5,7 +5,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 
-const PhotoListItem = ({ id, location, imageSource, username, profile,isFavorited, onToggleFavorite }) => {
+const PhotoListItem = ({ id, location, imageSource, username, profile,isFavorited, onToggleFavorite  }) => {
   return (
     <div className="photo-list__item">
       <img src={imageSource} alt={`Photo ${id}`} className="photo-list__image" />

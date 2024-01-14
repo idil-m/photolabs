@@ -59,8 +59,8 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = ({ photoData, toggleFavorite, favorites }) => {
-  return (
-    <ul className="photo-list">
+    return (
+      <ul className="photo-list">
       {photoData.map(photo => (
         <li key={photo.id} className="photo-list__item">
           <PhotoListItem
