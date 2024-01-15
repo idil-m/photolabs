@@ -1,40 +1,23 @@
-import React from 'react';
-
-//import PhotoListItem from './components/PhotoListItem';
+import React, { useState } from 'react';
 import './App.scss';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
-import HomeRoute from 'routes/HomeRoute';
-
-// Note: Rendering a single component to build components in isolation
-//const sampleDataForPhotoListItem = {
-  //id: "1",
-  //location: {
-    //city: "Montreal",
-    //country: "Canada",
-  //},
-  //imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  //username: "Joe Example",
- // profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-//};
-
+import photos from './mocks/photos';
+import topics from './mocks/topics';
+import HomeRoute from './routes/HomeRoute';
 
 const App = () => {
-  const favoriteCount = 5;
+  const [displayModal, setDisplayModal] = useState(false);
 
   return (
-  //const photos = new Array(3).fill(sampleDataForPhotoListItem);
-  //key={photo.id + index} photo={photo} 
-  
     <div className="App">
-      
-      <HomeRoute favoriteCount={favoriteCount} photoData={photos} topicData={topics} />
-    
-     
-          
-     
+      <HomeRoute
+        favoriteCount={5}
+        photoData={photos}
+        topicData={topics}
+        setDisplayModal={setDisplayModal}
+        displayModal={displayModal}
+      />
     </div>
-  
-);
-  }
+  );
+};
+
 export default App;
