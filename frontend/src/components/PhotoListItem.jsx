@@ -4,9 +4,9 @@ import React from 'react';
 
 const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavorite, setDisplayModal, setSelectedPhoto }) => {
   const handleImageClick = () => {
-    console.log("Photo clicked, opening modal"); 
+    console.log("Photo clicked, opening modal");
     setSelectedPhoto({ id, location, imageSource, username, profile });
-    setDisplayModal(true); 
+    setDisplayModal(true);
   };
 
   return (

@@ -3,7 +3,7 @@ import TopNavigationBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 import React, { useState } from 'react';
 
-const HomeRoute = ({ photoData, topicData, setDisplayModal,setSelectedPhoto }) => {
+const HomeRoute = ({ photoData, topicData, setDisplayModal, setSelectedPhoto }) => {
   const [favorites, setFavorites] = useState(new Set());
 
   const toggleFavorite = photoId => {
@@ -31,5 +31,4 @@ const HomeRoute = ({ photoData, topicData, setDisplayModal,setSelectedPhoto }) =
     </div>
   );
 };
-
 export default HomeRoute;
