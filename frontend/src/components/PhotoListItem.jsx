@@ -1,17 +1,14 @@
-
-
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
-import PhotoDetailsModal from '../routes/PhotoDetailsModal';
-import React, { useState } from 'react';
+import React from 'react'; 
 
-
-
-const PhotoListItem = ({ id, location, imageSource, username, profile,isFavorited, onToggleFavorite, setDisplayModal  }) => {
+const PhotoListItem = ({ id, location, imageSource, username, profile, isFavorited, onToggleFavorite, setDisplayModal, setSelectedPhoto }) => {
   const handleImageClick = () => {
-    setDisplayModal(true);
+    console.log("Photo clicked, opening modal"); 
+    setSelectedPhoto({ id, location, imageSource, username, profile });
+    setDisplayModal(true); 
   };
-  
+
   return (
     <div className="photo-list__item">
       <img src={imageSource} alt={`Photo ${id}`} className="photo-list__image" onClick={handleImageClick} />
@@ -24,10 +21,8 @@ const PhotoListItem = ({ id, location, imageSource, username, profile,isFavorite
           </div>
         </div>
       </div>
-      <PhotoFavButton isLiked={isFavorited} onToggle={onToggleFavorite}  />
-      
+      <PhotoFavButton isLiked={isFavorited} onToggle={onToggleFavorite} />
     </div>
   );
 };
-
 export default PhotoListItem;

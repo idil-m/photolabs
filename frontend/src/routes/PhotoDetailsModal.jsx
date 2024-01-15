@@ -7,6 +7,7 @@ const PhotoDetailsModal = ({ setDisplayModal }) => {
   const handleClose = () => {
     setDisplayModal(false); 
   };
+  console.log("Selected Photo Details:", photo);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={handleClose}>

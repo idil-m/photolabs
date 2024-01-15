@@ -58,7 +58,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = ({ photoData, toggleFavorite, favorites, setDisplayModal }) => {
+
+const PhotoList = ({ photoData, toggleFavorite, favorites, setDisplayModal,setSelectedPhoto }) => {
     return (
       <ul className="photo-list">
       {photoData.map(photo => (
@@ -72,6 +73,7 @@ const PhotoList = ({ photoData, toggleFavorite, favorites, setDisplayModal }) =>
             isFavorited={favorites.has(photo.id)}
             onToggleFavorite={() => toggleFavorite(photo.id)}
             setDisplayModal={setDisplayModal}
+            setSelectedPhoto={setSelectedPhoto}
           />
         </li>
       ))}
