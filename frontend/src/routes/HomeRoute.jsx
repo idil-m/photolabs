@@ -22,15 +22,17 @@ const HomeRoute = ({ photoData, topicData, setDisplayModal, displayModal }) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar favoriteCount={favorites.size} topicData={topicData} />
-      <PhotoList 
-        photoData={photoData} 
-        toggleFavorite={toggleFavorite} 
-        favorites={favorites}  
-        setDisplayModal={setDisplayModal}
-      />
+    <TopNavigationBar favoriteCount={favorites.size} topicData={topicData} />
+    <PhotoList 
+      photoData={photoData} 
+      toggleFavorite={toggleFavorite} 
+      favorites={favorites}
+      setDisplayModal={setDisplayModal}
+    />
 
-      {displayModal && <PhotoDetailsModal />}
+    {displayModal && <PhotoDetailsModal setDisplayModal={setDisplayModal} />}
+  
+      
     </div>
   );
 };

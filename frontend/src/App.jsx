@@ -16,6 +16,7 @@ const App = () => {
         setDisplayModal={setDisplayModal}
         displayModal={displayModal}
       />
+      
     </div>
   );
 };
