@@ -7,8 +7,8 @@ import PhotoFavButton from '../components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, similarPhotos, toggleFavorite, favorites }) => {
   useEffect(() => {
-    console.log(similarPhotos);
-  }, [similarPhotos]); // Add similarPhotos as a dependency
+    console.log(selectedPhoto);
+  }, [selectedPhoto]); // Add similarPhotos as a dependency
   
   const handleClose = () => {
     setDisplayModal(false);
@@ -29,12 +29,15 @@ const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, s
         <div className="photo-details-modal__images">
           <PhotoFavButton isLiked={favorites.has(selectedPhoto.id)} onToggle={() => toggleFavorite(selectedPhoto.id)} />
           <img src={selectedPhoto.urls.full} alt={`Photo ${selectedPhoto.id}`} className="photo-details-modal__image" />
-          
+          <div className="photo-details-modal__photographer">
+      <img src={selectedPhoto.profile} alt={`Photographer ${selectedPhoto.username}`} className="photo-details-modal__photographer-profile" />
+      {selectedPhoto.username}
+      </div>
         </div>
       )}
 
       {/* Similar Photos Section */}
-      <h2 className="photo-details-modal__header"></h2>
+      <h2 className="photo-details-modal__header">Similar Photo</h2>
       <div className="photo-details-modal__images">
         {similarPhotos && similarPhotos.length > 0 ? (
           similarPhotos.map(photo => (
