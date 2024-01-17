@@ -67,9 +67,10 @@ const PhotoList = ({ photoData, toggleFavorite, favorites, setDisplayModal,setSe
         <PhotoListItem
           id={photo.id}
           location={photo.location}
-          imageSource={photo.urls.regular}
+          urls={photo.urls}
           username={photo.user.username}
           profile={photo.user.profile}
+          similarPhotos={photo.similar_photos}
           isFavorited={favorites.has(photo.id)}
           onToggleFavorite={() => toggleFavorite(photo.id)}
           setDisplayModal={setDisplayModal}

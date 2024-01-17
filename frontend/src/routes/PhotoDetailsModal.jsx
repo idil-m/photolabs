@@ -1,13 +1,21 @@
-import React from 'react';
-
-import '../styles/PhotoDetailsModal.scss'
+import React, { useEffect } from 'react';
+import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from '../components/PhotoListItem';
+import PhotoFavButton from '../components/PhotoFavButton';
 
 
-const PhotoDetailsModal = ({ setDisplayModal, selectedPhoto, similarPhotos }) => {
+const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, similarPhotos, toggleFavorite, favorites }) => {
+  useEffect(() => {
+    console.log(similarPhotos);
+  }, [similarPhotos]); // Add similarPhotos as a dependency
+  
   const handleClose = () => {
     setDisplayModal(false);
+  };
+
+  const handleSetSelectedPhoto = (photo) => {
+    setSelectedPhoto(photo);
   };
 
   return (
@@ -19,24 +27,33 @@ const PhotoDetailsModal = ({ setDisplayModal, selectedPhoto, similarPhotos }) =>
       {/* Displaying the larger selected photo */}
       {selectedPhoto && (
         <div className="photo-details-modal__images">
+          <PhotoFavButton isLiked={favorites.has(selectedPhoto.id)} onToggle={() => toggleFavorite(selectedPhoto.id)} />
           <img src={selectedPhoto.urls.full} alt={`Photo ${selectedPhoto.id}`} className="photo-details-modal__image" />
+          
         </div>
       )}
 
       {/* Similar Photos Section */}
-      <h2 className="photo-details-modal__header">Similar Photos</h2>
+      <h2 className="photo-details-modal__header"></h2>
       <div className="photo-details-modal__images">
-        {similarPhotos && similarPhotos.map(photo => (
-          <PhotoListItem
-            key={photo.id}
-            id={photo.id}
-            location={photo.location}
-            imageSource={photo.urls.regular}
-            username={photo.user.username}
-            profile={photo.user.profile}
-            // Include other necessary props as per your PhotoListItem's requirements
-          />
-        ))}
+        {similarPhotos && similarPhotos.length > 0 ? (
+          similarPhotos.map(photo => (
+            <PhotoListItem
+              key={photo.id}
+              id={photo.id}
+              location={photo.location}
+              urls={photo.urls}
+              username={photo.user.username}
+              profile={photo.user.profile}
+              isFavorited={favorites.has(photo.id)}
+              onToggleFavorite={() => toggleFavorite(photo.id)}
+              setDisplayModal={setDisplayModal}
+              setSelectedPhoto={handleSetSelectedPhoto}
+            />
+          ))
+        ) : (
+          <p></p>
+        )}
       </div>
     </div>
   );
