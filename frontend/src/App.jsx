@@ -7,13 +7,8 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
-  const {
-    modalState,
-    favorites,
-    toggleFavorite,
-    setDisplayModal,
-    setSelectedPhoto
-  } = useApplicationData();
+  const { state, dispatch, toggleFavorite, setSelectedPhoto } = useApplicationData();
+  
   console.log(state);
   return (
     <div className="App">

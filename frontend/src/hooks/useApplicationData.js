@@ -27,111 +27,41 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'FAV_PHOTO_ADDED':
-      const newFavoritesAdded = new Set(state.favorites);
-      newFavoritesAdded.add(action.payload);
-      return { ...state, favorites: newFavoritesAdded };
-
-    case 'FAV_PHOTO_REMOVED':
-      const newFavoritesRemoved = new Set(state.favorites);
-      newFavoritesRemoved.delete(action.payload);
-      return { ...state, favorites: newFavoritesRemoved };
-
-      case 'SET_PHOTO_DATA':
+    case ACTIONS.FAV_PHOTO_ADDED:
+      return { ...state, favorites: new Set(state.favorites).add(action.payload) };
+    case ACTIONS.FAV_PHOTO_REMOVED:
+      const newFavorites = new Set(state.favorites);
+      newFavorites.delete(action.payload);
+      return { ...state, favorites: newFavorites };
+    case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photos: action.payload };
-
-    case 'SET_TOPIC_DATA':
+    case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topics: action.payload };
-
-    case 'SELECT_PHOTO':
-      return { 
-        ...state, 
-        modalState: { ...state.modalState, selectedPhoto: action.payload,  displayModal: true  }
-      };
-
-    case 'DISPLAY_PHOTO_DETAILS':
-      return { 
-        ...state, 
-        modalState: { ...state.modalState, displayModal: action.payload }
-      };
-
-      default:
-        throw new Error(`Unsupported action type: ${action.type}`);
-    }
+    case ACTIONS.SELECT_PHOTO:
+      return { ...state, modalState: { ...state.modalState, selectedPhoto: action.payload, displayModal: true } };
+    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+      return { ...state, modalState: { ...state.modalState, displayModal: action.payload } };
+    default:
+      throw new Error(`Unsupported action type: ${action.type}`);
+  }
 }
 
+const useApplicationData = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    const useApplicationData = () => {
-      const [state, dispatch] = useReducer(reducer, initialState);
-
-      const toggleFavorite = photoId => {
-        if (state.favorites.has(photoId)) {
-          dispatch({ type: 'FAV_PHOTO_REMOVED', payload: photoId });
-        } else {
-          dispatch({ type: 'FAV_PHOTO_ADDED', payload: photoId });
-        }
-      };
-    
-      const setSelectedPhoto = photo => {
-        dispatch({ type: 'SELECT_PHOTO', payload: photo });
-      };
-    
-      useEffect(() => {
-        const fetchData = async () => {
-          const photoData = await fetchPhotos();
-    const topicData = await fetchTopics();
-    dispatch({ type: 'SET_PHOTO_DATA', payload: photoData });
-    dispatch({ type: 'SET_TOPIC_DATA', payload: topicData });
+  const toggleFavorite = photoId => {
+    const actionType = state.favorites.has(photoId) ? ACTIONS.FAV_PHOTO_REMOVED : ACTIONS.FAV_PHOTO_ADDED;
+    dispatch({ type: actionType, payload: photoId });
   };
 
-  fetchData();
-}, []);
-
-
-      return {
-        state,
-        dispatch,
-        toggleFavorite,
-        setSelectedPhoto
-        
-      };
-    };
-      
-    
-  
-  
-  //   const setDisplayModal = (display) => {
-//     setModalState({ ...modalState, displayModal: display });
-//   };
-
-//   const setSelectedPhoto = (photo) => {
-    
-    
-   
-//    console.log("selected",photo)
-//     setModalState(prevState => ({ 
-//       ...prevState, 
-//       selectedPhoto: photo, 
-//      similarPhotos: Object.values(photo.similarPhotos)
-//     }));
-//   };
-
-//   useEffect(() => {
-//     if (modalState.selectedPhoto) {
-//       setDisplayModal(true);
-//     }
-//   }, [modalState.selectedPhoto]);
-
-//     modalState,
-//     setModalState,
-//     favorites,
-//     toggleFavorite,
-//     setDisplayModal,
-//     setSelectedPhoto
-//   };
-// };
-
-
-
-  export default useApplicationData;
-  
+  const setSelectedPhoto = photo => {
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+  };
+  return {
+    state,
+    dispatch,
+    toggleFavorite,
+    setSelectedPhoto
+  };
+};
+export default useApplicationData;
