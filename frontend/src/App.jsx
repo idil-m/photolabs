@@ -9,12 +9,12 @@ import useApplicationData from './hooks/useApplicationData';
 const App = () => {
   const {
     modalState,
-    setModalState,
     favorites,
     toggleFavorite,
     setDisplayModal,
     setSelectedPhoto
   } = useApplicationData();
+  console.log(state);
   return (
     <div className="App">
       <HomeRoute
