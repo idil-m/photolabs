@@ -3,22 +3,8 @@ The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
 
-## Setup
+PhotoLabs is a React-based single-page application (SPA) that allows users to view photos in different contexts. We will use a pre-existing API to build a frontend user experience for users to interact with photos!
 
-Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
+## Screenshots
 
-## [Frontend] Running Webpack Development Server
 
-```sh
-cd frontend
-npm start
-```
-
-## [Backend] Running Backend Servier
-
-Read `backend/readme` for further setup details.
-
-```sh
-cd backend
-npm start
-```
