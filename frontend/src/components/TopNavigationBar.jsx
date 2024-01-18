@@ -9,9 +9,9 @@ const TopNavigationBar = ({ favoriteCount, topicData, onTopicSelect }) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topicData={topicData} onTopicSelect={onTopicSelect} />
-      <FavBadge isFavPhotoExist={favoriteCount > 0}/>
+      <FavBadge isFavPhotoExist={favoriteCount > 0} />
     </div>
- );
+  );
 };
 
 

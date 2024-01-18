@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
-import PhotoDetailsModal from './routes/PhotoDetailsModal'; 
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
   const { state, dispatch, toggleFavorite, setSelectedPhoto, setDisplayModal, fetchPhotosByTopic } = useApplicationData();
-  
+
   const handleTopicSelect = (topicId) => {
     fetchPhotosByTopic(topicId);
   };
@@ -26,7 +26,7 @@ const App = () => {
         <PhotoDetailsModal
           setDisplayModal={setDisplayModal}
           selectedPhoto={state.modalState.selectedPhoto}
-          similarPhotos={state.modalState.similarPhotos} 
+          similarPhotos={state.modalState.similarPhotos}
           setSelectedPhoto={setSelectedPhoto}
           favorites={state.favorites}
           toggleFavorite={toggleFavorite}

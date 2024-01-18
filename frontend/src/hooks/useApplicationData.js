@@ -18,7 +18,7 @@ const initialState = {
   favorites: new Set(),
   photoData: [],
   topicData: [],
-  
+
 };
 
 function reducer(state, action) {
@@ -32,7 +32,7 @@ function reducer(state, action) {
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
     case ACTIONS.SELECT_PHOTO:
-      return { ...state, modalState: { ...state.modalState, selectedPhoto: action.payload, displayModal: true, similarPhotos:Object.values(action.payload.similarPhotos) } };
+      return { ...state, modalState: { ...state.modalState, selectedPhoto: action.payload, displayModal: true, similarPhotos: Object.values(action.payload.similarPhotos) } };
     case ACTIONS.TOGGLE_MODAL_DISPLAY:
       return { ...state, modalState: { ...state.modalState, displayModal: action.payload } };
     case ACTIONS.TOGGLE_FAVORITE:
@@ -83,8 +83,8 @@ const useApplicationData = () => {
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch(error => console.error("Failed to fetch topics:", error));
   }, []);
-  
-  
+
+
   return {
     state,
     dispatch,

@@ -1,7 +1,5 @@
 import React from "react";
 import TopicListItem from "./TopicListItem";
-import useApplicationData from '../hooks/useApplicationData';
-
 import "../styles/TopicList.scss";
 
 

@@ -8,8 +8,8 @@ import PhotoFavButton from '../components/PhotoFavButton';
 const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, similarPhotos, toggleFavorite, favorites }) => {
   useEffect(() => {
     console.log(selectedPhoto);
-  }, [selectedPhoto]); 
-  
+  }, [selectedPhoto]);
+
   const handleClose = () => {
     setDisplayModal(false);
   };
@@ -31,11 +31,11 @@ const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, s
           <img src={selectedPhoto.urls.full} alt={`Photo ${selectedPhoto.id}`} className="photo-details-modal__image" />
           <div className="photo-details-modal__photographer">
             <img src={selectedPhoto.profile} alt={`Photographer ${selectedPhoto.username}`} className="photo-details-modal__photographer-profile" />
-            {selectedPhoto.username} 
-            <div className="photo-details-modal__location"> 
-              {selectedPhoto.location.city}, {selectedPhoto.location.country} 
+            {selectedPhoto.username}
+            <div className="photo-details-modal__location">
+              {selectedPhoto.location.city}, {selectedPhoto.location.country}
             </div>
-    
+
           </div>
         </div>
       )}
@@ -65,7 +65,7 @@ const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, s
     </div>
   );
 };
- 
+
 
 export default PhotoDetailsModal;
 
