@@ -27,6 +27,11 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 15px;
+ 
+  
 }
 
 .photo-details-modal__image {
@@ -74,4 +79,18 @@
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+}
+.no-scroll {
+  overflow: hidden; 
+  height: 100%; 
+}
+
+.photo-details-modal__location{
+  color:rgb(124, 124, 124);
+  margin-left: 10px;
+}
+.photo-details-modal__photographer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

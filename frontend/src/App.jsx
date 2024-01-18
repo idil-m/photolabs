@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import photos from './mocks/photos';
-import topics from './mocks/topics';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal'; 
 import useApplicationData from './hooks/useApplicationData';
@@ -28,7 +26,7 @@ const App = () => {
         <PhotoDetailsModal
           setDisplayModal={setDisplayModal}
           selectedPhoto={state.modalState.selectedPhoto}
-          similarPhotos={state.modalState.similarPhotos} // Pass similar photos to the modal
+          similarPhotos={state.modalState.similarPhotos} 
           setSelectedPhoto={setSelectedPhoto}
           favorites={state.favorites}
           toggleFavorite={toggleFavorite}

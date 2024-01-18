@@ -30,10 +30,13 @@ const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, s
           <PhotoFavButton isLiked={favorites.has(selectedPhoto.id)} onToggle={() => toggleFavorite(selectedPhoto.id)} />
           <img src={selectedPhoto.urls.full} alt={`Photo ${selectedPhoto.id}`} className="photo-details-modal__image" />
           <div className="photo-details-modal__photographer">
-      <img src={selectedPhoto.profile} alt={`Photographer ${selectedPhoto.username}`} className="photo-details-modal__photographer-profile" />
-      {selectedPhoto.username}
+            <img src={selectedPhoto.profile} alt={`Photographer ${selectedPhoto.username}`} className="photo-details-modal__photographer-profile" />
+            {selectedPhoto.username} 
+            <div className="photo-details-modal__location"> 
+              {selectedPhoto.location.city}, {selectedPhoto.location.country} 
+            </div>
     
-      </div>
+          </div>
         </div>
       )}
 
