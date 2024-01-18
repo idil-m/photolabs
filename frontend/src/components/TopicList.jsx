@@ -1,5 +1,6 @@
 import React from "react";
 import TopicListItem from "./TopicListItem";
+import useApplicationData from '../hooks/useApplicationData';
 
 import "../styles/TopicList.scss";
 
@@ -21,11 +22,11 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = ({ topicData }) => {
+const TopicList = ({ topicData, onTopicSelect }) => {
   return (
     <div className="top-nav-bar__topic-list">
       {topicData.map(topic => (
-        <TopicListItem key={topic.id} label={topic.title} />
+        <TopicListItem key={topic.id} label={topic.title} onClick={() => onTopicSelect(topic.id)} />
       ))}
     </div>
   );

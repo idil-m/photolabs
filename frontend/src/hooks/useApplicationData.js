@@ -17,8 +17,8 @@ export const ACTIONS = {
 const initialState = {
   modalState: { displayModal: false, selectedPhoto: null, similarPhotos: [] },
   favorites: new Set(),
-  photos: photos,
-  topics: topics,
+  photoData: [],
+  topicData: [],
   
 };
 
@@ -29,9 +29,9 @@ function reducer(state, action) {
     case ACTIONS.FAV_PHOTO_REMOVED:
       return { ...state, favorites: state.favorites.filter(fav => fav !== action.payload) };
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state, photos: action.payload };
+      return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
-      return { ...state, topics: action.payload };
+      return { ...state, topicData: action.payload };
     case ACTIONS.SELECT_PHOTO:
       return { ...state, modalState: { ...state.modalState, selectedPhoto: action.payload, displayModal: true, similarPhotos:Object.values(action.payload.similarPhotos) } };
     case ACTIONS.TOGGLE_MODAL_DISPLAY:
@@ -65,12 +65,34 @@ const useApplicationData = () => {
   const setDisplayModal = (display) => {
     dispatch({ type: ACTIONS.TOGGLE_MODAL_DISPLAY, payload: display });
   };
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => console.error("Failed to fetch photos by topic:", error));
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:8001/api/photos")
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => console.error("Failed to fetch photos:", error));
+  }, []);
+  useEffect(() => {
+    fetch("http://localhost:8001/api/topics")
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch(error => console.error("Failed to fetch topics:", error));
+  }, []);
+  
+  
   return {
     state,
     dispatch,
     toggleFavorite,
     setSelectedPhoto,
-    setDisplayModal
+    setDisplayModal,
+    fetchPhotosByTopic
   };
 };
 export default useApplicationData;

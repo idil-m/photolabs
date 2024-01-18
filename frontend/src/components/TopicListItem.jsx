@@ -8,11 +8,11 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = ({ label }) => {
+const TopicListItem = ({ label, onClick }) => {
   return (
-    <div className="topic-list__item">
+    <button className="topic-list-item" onClick={onClick}>
       {label}
-    </div>
+    </button>
   );
 };
 

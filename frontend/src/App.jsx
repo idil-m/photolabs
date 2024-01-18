@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
@@ -7,16 +7,20 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
-  const { state, dispatch, toggleFavorite, setSelectedPhoto, setDisplayModal } = useApplicationData();
+  const { state, dispatch, toggleFavorite, setSelectedPhoto, setDisplayModal, fetchPhotosByTopic } = useApplicationData();
   
-  console.log(state);
+  const handleTopicSelect = (topicId) => {
+    fetchPhotosByTopic(topicId);
+  };
+
   return (
     <div className="App">
       <HomeRoute
-        photoData={photos}
-        topicData={topics}
+        photoData={state.photoData}
+        topicData={state.topicData}
         setDisplayModal={setDisplayModal}
         setSelectedPhoto={setSelectedPhoto}
+        onTopicSelect={handleTopicSelect}
         favorites={state.favorites}
         toggleFavorite={toggleFavorite}
       />
