@@ -12,7 +12,7 @@ export const ACTIONS = {
   TOGGLE_MODAL_DISPLAY: 'TOGGLE_MODAL_DISPLAY',
   TOGGLE_FAVORITE: 'TOGGLE_FAVORITE',
 }
-
+//Initial state of the application
 const initialState = {
   modalState: { displayModal: false, selectedPhoto: null, similarPhotos: [] },
   favorites: new Set(),
@@ -20,7 +20,7 @@ const initialState = {
   topicData: [],
 
 };
-
+//Reducer function to handle state changes
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -52,9 +52,10 @@ function reducer(state, action) {
   }
 
 }
-
+//Custom hook to manage app state
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+ //Functions to dispatch action
   const toggleFavorite = photoId => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photoId });
   };
@@ -64,27 +65,28 @@ const useApplicationData = () => {
   const setDisplayModal = (display) => {
     dispatch({ type: ACTIONS.TOGGLE_MODAL_DISPLAY, payload: display });
   };
+  // Fetch photos by topic from API
   const fetchPhotosByTopic = (topicId) => {
-    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+    fetch(`topics/photos/${topicId}`)
       .then(response => response.json())
       .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
       .catch(error => console.error("Failed to fetch photos by topic:", error));
   };
-
+// useEffect hooks to fetch initial data for photos and topics
   useEffect(() => {
-    fetch("http://localhost:8001/api/photos")
+    fetch("api/photos")
       .then(response => response.json())
       .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
       .catch(error => console.error("Failed to fetch photos:", error));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:8001/api/topics")
+    fetch("api/topics")
       .then(response => response.json())
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch(error => console.error("Failed to fetch topics:", error));
   }, []);
 
-
+//Return state and action 
   return {
     state,
     dispatch,

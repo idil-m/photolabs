@@ -4,15 +4,18 @@ import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
-const App = () => {
-  const { state, dispatch, toggleFavorite, setSelectedPhoto, setDisplayModal, fetchPhotosByTopic } = useApplicationData();
 
+const App = () => {
+  //Custom hooks
+  const { state, dispatch, toggleFavorite, setSelectedPhoto, setDisplayModal, fetchPhotosByTopic } = useApplicationData();
+//Function to handle topic selection and fetch photos
   const handleTopicSelect = (topicId) => {
     fetchPhotosByTopic(topicId);
   };
 
   return (
     <div className="App">
+      {/*HomeRoute displays the main page with photo and topics*/}
       <HomeRoute
         photoData={state.photoData}
         topicData={state.topicData}
@@ -22,6 +25,7 @@ const App = () => {
         favorites={state.favorites}
         toggleFavorite={toggleFavorite}
       />
+      {/*Renders the PhotodetailMOdal if modal is set to display*/}
       {state.modalState.displayModal && (
         <PhotoDetailsModal
           setDisplayModal={setDisplayModal}

@@ -4,20 +4,22 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from '../components/PhotoListItem';
 import PhotoFavButton from '../components/PhotoFavButton';
 
-
+//PhotoDetailModal component
 const PhotoDetailsModal = ({ setDisplayModal, setSelectedPhoto, selectedPhoto, similarPhotos, toggleFavorite, favorites }) => {
+   // useEffect hook to perform side-effects related to selectedPhoto
   useEffect(() => {
-    console.log(selectedPhoto);
+    
   }, [selectedPhoto]);
-
+//Function to handle closing modal
   const handleClose = () => {
     setDisplayModal(false);
   };
 
+  // Function to handle setting the selected photo
   const handleSetSelectedPhoto = (photo) => {
     setSelectedPhoto(photo);
   };
-
+//Rendering the modal content
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={handleClose}>
