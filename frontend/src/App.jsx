@@ -28,6 +28,7 @@ const App = () => {
       {/*Renders the PhotodetailMOdal if modal is set to display*/}
       {state.modalState.displayModal && (
         <PhotoDetailsModal
+          photoData={state.photoData}
           setDisplayModal={setDisplayModal}
           selectedPhoto={state.modalState.selectedPhoto}
           similarPhotos={state.modalState.similarPhotos}

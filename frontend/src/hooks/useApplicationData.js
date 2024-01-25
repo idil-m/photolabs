@@ -60,6 +60,7 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photoId });
   };
   const setSelectedPhoto = photo => {
+    console.log(photo)
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
   const setDisplayModal = (display) => {
@@ -67,7 +68,7 @@ const useApplicationData = () => {
   };
   // Fetch photos by topic from API
   const fetchPhotosByTopic = (topicId) => {
-    fetch(`topics/photos/${topicId}`)
+    fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())
       .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
       .catch(error => console.error("Failed to fetch photos by topic:", error));

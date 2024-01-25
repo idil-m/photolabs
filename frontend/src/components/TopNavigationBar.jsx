@@ -11,7 +11,7 @@ const TopNavigationBar = ({ favoriteCount, topicData, onTopicSelect }) => {
        {/* Topic list component, receives topicData and a callback for topic selection */}
       <TopicList topicData={topicData} onTopicSelect={onTopicSelect} />
        {/* FavBadge component */}
-      <FavBadge isFavPhotoExist={favoriteCount > 0} />
+      <FavBadge isFavPhotoExist={favoriteCount > 0}  alwaysRed={true} />
     </div>
   );
 };
