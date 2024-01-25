@@ -25,24 +25,24 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 
 # Dependencies
 ## Front-End dependencies:
-@testing-library/jest-dom
-@testing-library/react
-@testing-library/user-event
-react
-react-dom
-react-scripts
-web-vitals
+@testing-library/jest-dom,
+@testing-library/react,
+@testing-library/user-event,
+react,
+react-dom,
+react-scripts,
+web-vitals,
 ## Front-End devDependencies
 Sass
 ## Back-end dependencies:
-body-parser
-cors
-dotenv
-express
-helmet
-pg
-socket.io
-ws
+body-parser,
+cors,
+dotenv,
+express,
+helmet,
+pg,
+socket.io,
+ws,
 ## Back-end devDependencies:
-jest
+jest,
 supertest
