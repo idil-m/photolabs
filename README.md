@@ -5,6 +5,8 @@ The PhotoLabs project for the Web Development React course programming.
 
 PhotoLabs is a React-based single-page application (SPA) that allows users to view photos in different contexts. We will use a pre-existing API to build a frontend user experience for users to interact with photos!
 
+
+
 ## Screenshots
 #Home-Page
 ![fe4cf025af8910180ba6151bccbdca55](https://github.com/idil-m/photolabs/assets/96976157/a692d440-93b5-4dc3-aaf3-246430ae2123)
@@ -21,3 +23,26 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 ![5abe9e0d44371c85b87a312437851772](https://github.com/idil-m/photolabs/assets/96976157/3774abc7-1e27-4cfd-932b-c09d64d4d331)
 
 
+# Dependencies
+## Front-End dependencies:
+@testing-library/jest-dom
+@testing-library/react
+@testing-library/user-event
+react
+react-dom
+react-scripts
+web-vitals
+## Front-End devDependencies
+Sass
+## Back-end dependencies:
+body-parser
+cors
+dotenv
+express
+helmet
+pg
+socket.io
+ws
+## Back-end devDependencies:
+jest
+supertest
