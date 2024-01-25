@@ -17,13 +17,12 @@ const PhotoDetailsModal = ({ photoData, setDisplayModal, setSelectedPhoto, selec
 
   // Function to handle setting the selected photo
   const handleSetSelectedPhoto = (photo) => {
-    console.log("modal", photo)
     setSelectedPhoto(photo);
   };
 
   const getPhoto = (id) => {
     const p = photoData.find(photo => photo.id === id);
-    console.log(photoData,p)
+   
     return p
   };
   

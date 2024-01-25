@@ -60,7 +60,7 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photoId });
   };
   const setSelectedPhoto = photo => {
-    console.log(photo)
+   
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
   const setDisplayModal = (display) => {
